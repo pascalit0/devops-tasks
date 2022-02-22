@@ -1,4 +1,7 @@
 #!/bin/bash
+#
+## Startup script can either set the port from first argument or environment variable
+#
 
 PORT=$1
 

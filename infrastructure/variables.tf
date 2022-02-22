@@ -1,6 +1,6 @@
 variable "container_port" {
   type = string
-  default = "8085"
+  default = "8081"
   description = "Port for the happy_stars application"
 }
 

@@ -5,8 +5,7 @@
 1. Terraform: Direct AWS API Gateway connection to a S3 bucket in order to place a xls file:
 All other actions had been done already using lamdbas in between, so I had to refactor the existing terraform code.
 2. Refactoring of all UnitTests for having a uniform naming convention, structure and test scenarios
-3. Implement an abstraction layer for the keycloak api that serves our project needs
-4. Reverse engineering in a Liferay project to use existing internal services for content parsing/import
+3. Reverse engineering in a Liferay project to use existing internal services for content parsing/import
 
 
 ### Personal meaning of DevOps
@@ -25,21 +24,54 @@ Nano ;-)
 ## Part 2 - Coding
 
 ### Prerequisites
-* Docker + Docker-Compose installed
+* Install Docker daemon (e.g. via Docker Desktop)
+* Install Terraform
+* Navigate to the infrastructure dir and run
+```bash
+terraform init
+```
 
 
 ### Instructions
 
-#### Start:
+#### 1. Start / Create everything:
 
-Navigate to projects root and run:
+Navigate to infrastructure directory and run:
 ```bash
-docker-compose up
+# With default port
+terraform apply
+
+# With custom port
+terraform apply -var="container_port=9999" 
+```
+
+The application is then available via 
+```
+localhost:8081
+```
+or your specified port.
+
+
+#### Recreate / Remove everything
+To recreate or cleanup the container (-image) run 
+```bash
+terraform destroy
 ```
 
 
-#### Recreate
-To restart and recreate the container (-image) run 
-```bash
-docker-compose up --build --force-recreate
-```
+### How does it work?
+#### run.sh
+The script starts the jar file with either the argument or it defaults to the ***EXT_PORT*** environment variable.
+
+#### Docker
+The Dockerfile is based on a standard jdk8 image and copies the jar as well as the run.sh into the container image.
+The run.sh is the entry point of the container.
+
+#### Terraform
+Terraform creates the Docker-Image locally and runs the container.
+Based on the variables.tf the **port** and image-**version** can be specified.
+If not set the port defaults to ***8081***
+
+
+
+
