@@ -19,3 +19,27 @@ A role that takes cares that...
 
 ### Prefer Emacs or Vim?
 Nano ;-)
+
+
+
+## Part 2 - Coding
+
+### Prerequisites
+* Docker + Docker-Compose installed
+
+
+### Instructions
+
+#### Start:
+
+Navigate to projects root and run:
+```bash
+docker-compose up
+```
+
+
+#### Recreate
+To restart and recreate the container (-image) run 
+```bash
+docker-compose up --build --force-recreate
+```
