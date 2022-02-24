@@ -4,12 +4,12 @@
 ### Proudest achievements
 1. Terraform: Direct AWS API Gateway connection to a S3 bucket in order to place a xls file:
 All other actions had been done already using lamdbas in between, so I had to refactor the existing terraform code.
-2. Refactoring of all UnitTests for having a uniform naming convention, structure and test scenarios
+2. Refactoring of all already existing UnitTests in a grown project for having a uniform naming convention, structure and test scenarios
 3. Reverse engineering in a Liferay project to use existing internal services for content parsing/import
 
 
 ### Personal meaning of DevOps
-A role that takes cares that...
+A role that takes care about...
 * ...every part of the infrastructure is *"documented"* via code (IaC) so that there are no manual and undocumented steps left
   * with this everything can easily be reconstructed, moved or duplicated
 * ...every build and deployment of software is automated through CI / CD Pipelines
